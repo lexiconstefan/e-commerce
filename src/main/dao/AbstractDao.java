@@ -1,10 +1,7 @@
 package main.dao;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import main.loadData.LoadData;
 
@@ -15,8 +12,12 @@ public class AbstractDao<T> {
 	
 	public AbstractDao(String path){
 		if(list == null){
+			list = new ArrayList<>();
 			ClassLoader classLoader = getClass().getClassLoader();
 			LoadData.loadBooks(classLoader.getResourceAsStream(path), list);
+			for (T t : list) {
+				System.out.println(t.toString());
+			}
 		}
 		
 	}

@@ -6,7 +6,12 @@ import main.web.se.books.model.Book;
 
 public class BookListImpl implements BookList{
 	
-	IBookDao dao = new BookDaoImpl("bookstoredata.txt");
+	IBookDao dao;
+
+	public BookListImpl() {
+		System.out.println("YEES");
+		dao = new BookDaoImpl("bookstoredata.txt");
+	}
 
 	@Override
 	public Book[] list(String searchString) {

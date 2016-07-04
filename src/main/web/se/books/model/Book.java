@@ -2,6 +2,7 @@ package main.web.se.books.model;
 
 import java.math.BigDecimal;
 
+
 public class Book {
 
 	private String title;
@@ -43,4 +44,8 @@ public class Book {
 		this.price = price;
 	}
 
+	@Override
+	public String toString() {
+		return "[Book Title=" + getTitle() + ", Author=" + getAuthor() + ", Price=" + getPrice() + "]";
+	}
 }
