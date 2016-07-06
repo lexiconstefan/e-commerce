@@ -8,13 +8,15 @@ public class Book {
 	private String title;
 	private String author;
 	private BigDecimal price;
+	private static int nbr;
 
 	public Book() {
 
 	}
 
-	public Book(String title, String author, BigDecimal price) {
+	public Book(String title, String author, BigDecimal price, int nbr) {
 		super();
+		this.nbr = nbr;
 		this.title = title;
 		this.author = author;
 		this.price = price;
@@ -42,6 +44,9 @@ public class Book {
 
 	public void setPrice(BigDecimal price) {
 		this.price = price;
+	}
+	public int getNbr(){
+		return nbr;
 	}
 
 	@Override

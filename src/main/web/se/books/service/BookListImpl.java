@@ -9,14 +9,15 @@ public class BookListImpl implements BookList{
 	IBookDao dao;
 
 	public BookListImpl() {
-		System.out.println("YEES");
-		dao = new BookDaoImpl("bookstoredata.txt");
+		if(dao == null){
+			dao = new BookDaoImpl("bookstoredata.txt");
+		}
+		
 	}
 
 	@Override
 	public Book[] list(String searchString) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.list(searchString);
 	}
 
 	@Override
