@@ -1,32 +1,69 @@
 package main.dao;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import main.loadData.LoadData;
+import main.web.se.books.model.Book;
 
 public class AbstractDao<T> {
 	
-	List<T> list;
+	private static List<Book> bookList;
 	
 	
 	public AbstractDao(String path){
-		if(list == null){
-			list = new ArrayList<>();
+		if(bookList == null){
+			bookList= new ArrayList<>();
 			ClassLoader classLoader = getClass().getClassLoader();
-			LoadData.loadBooks(classLoader.getResourceAsStream(path), list);
-			for (T t : list) {
-				System.out.println(t.toString());
+			InputStream  input = classLoader.getResourceAsStream(path);
+			try {
+				BufferedReader reader = new BufferedReader(new InputStreamReader(input, "UTF-8"));
+
+				String line;
+				while((line = reader.readLine()) != null){
+
+					String[] s = line.split(";");
+					try {
+
+						int nbr = Integer.parseInt(s[3]);
+						bookList.add( new Book(s[0], s[1], new BigDecimal(s[2]),nbr));
+						
+					} catch (Exception e) {
+
+					}
+				}
+				
+			}catch (IOException e) {
+				System.out.println("IOException" + e.getMessage());
+			}catch (Exception e) {
+				// TODO: handle exception
+				System.out.println("Exception" + e.getMessage());
+				System.out.println(e);
 			}
+			
 		}
 		
 	}
-
-	public List<T> getFromFile(String path) {
+	public List<Book> getBookList(){
 		
-		//generic list
+		return bookList;
+	}
+	public List<T> search(Predicate<Book> pred) {
+		
 		List<T> list = new ArrayList<>();
 		//get txt t file from resources
+		for(Book b:bookList){
+			if(pred.test(b)){
+				list.add((T)b);
+			}
+		}
+		
 		
 		
 	
