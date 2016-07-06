@@ -1,5 +1,5 @@
 package main;
 
-class Test {
+protected class Test {
 
 }

@@ -13,6 +13,7 @@ public class BookDaoImpl extends AbstractDao<Book> implements IBookDao{
 	@Override
 	public Book[] list(String searchString) {
 		// TODO Auto-generated method stub
+		int i;
 		return null;
 	}
 
