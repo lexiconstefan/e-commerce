@@ -1,0 +1,51 @@
+package main.web.se.books.dao;
+
+import java.util.List;
+
+import main.dao.AbstractDao;
+import main.web.se.books.model.Book;
+
+public class BookDaoImpl extends AbstractDao<Book> implements IBookDao{
+
+	public BookDaoImpl(String path) {
+		super(path);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public Book[] list(String searchString) {
+<<<<<<< HEAD
+		// TODO Auto-generated method stub
+		int i;
+		return null;
+=======
+		
+		String[] search = searchString.split(";");
+		if(search.length < 2){
+			return getBookList().toArray(new Book[getBookList().size()]);
+		}else{
+			String title = search[1];
+			String author = search[0];
+			
+			List<Book> list= search(
+					b -> b.getAuthor().equals(author)
+					&& b.getTitle().equals(title));
+			
+			return list.toArray(new Book[list.size()]);
+		}
+>>>>>>> b86f6516233abdd76f9e7d489988e42f8464f3df
+	}
+
+	@Override
+	public boolean add(Book book, int quantity) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int[] buy(Book... books) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
