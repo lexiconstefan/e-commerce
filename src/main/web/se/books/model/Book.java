@@ -8,7 +8,8 @@ public class Book {
 	private String title;
 	private String author;
 	private BigDecimal price;
-	private static int nbr;
+	private String isbn;
+	private int nbr;
 
 	public Book() {
 
@@ -45,12 +46,26 @@ public class Book {
 	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
-	public int getNbr(){
+
+	public int getNbr() {
 		return nbr;
+	}
+
+	public void setNbr(int nbr) {
+		this.nbr = nbr;
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
 	}
 
 	@Override
 	public String toString() {
-		return "[Book Title=" + getTitle() + ", Author=" + getAuthor() + ", Price=" + getPrice() + "]";
+		return "[" + getNbr() + " copy left of Book Title=" + getTitle() + ", Author=" + getAuthor() + ", Price="
+				+ getPrice() + "]";
 	}
 }

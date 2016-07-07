@@ -2,9 +2,10 @@ package main;
 
 import java.util.Scanner;
 
-import main.web.se.books.controller.BookController;
+import main.BookUtill.State;
 
 public class Main {
+
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -18,6 +19,13 @@ public class Main {
 			if(command.equalsIgnoreCase("exit")){
 				break;
 			}else{
+				switch (command) {
+				case "add":
+					bookStore.setState(State.ADD);
+					break;
+				default:
+					break;
+				}
 				bookStore.runBookStore(command);
 			}
 			

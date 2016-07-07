@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-import main.loadData.LoadData;
 import main.web.se.books.model.Book;
 
 public class AbstractDao<T> {
@@ -54,20 +53,19 @@ public class AbstractDao<T> {
 		
 		return bookList;
 	}
-	public List<T> search(Predicate<Book> pred) {
+
+	public List<T> search(Predicate<Book> tester) {
 		
 		List<T> list = new ArrayList<>();
 		//get txt t file from resources
+
 		for(Book b:bookList){
-			if(pred.test(b)){
+			if (tester.test(b)) {
 				list.add((T)b);
 			}
 		}
-		
-		
-		
-	
 		return list;
 	}
+
 
 }
