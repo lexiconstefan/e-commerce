@@ -15,7 +15,7 @@ public class BookUtill {
 
 	List<String> inputList;
 	BookController ctlr;
-	State state;
+	State state=State.MENU;
 
 	public BookUtill(){
 		if(ctlr==null){
@@ -42,13 +42,23 @@ public class BookUtill {
 			search(input);
 			break;
 		case BUY:
+			buy();
 			break;
 		case ADD:
 			addBook(input);
 			break;
+		case MENU:
+			break;
 		}
 		
 
+	}
+	private void buy(){
+		switch(inputList.size()){
+		case 0:
+			System.out.println("Enter title");
+			break;
+		}
 	}
 	private void search(String input){
 		if(input.equalsIgnoreCase("all")){
