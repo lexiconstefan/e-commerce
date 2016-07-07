@@ -17,7 +17,7 @@ public class AbstractDao<T> {
 	
 	private static List<Book> bookList;
 	
-	private ICa
+    private ICart<T> cart;
 	
 	
 	public AbstractDao(String path){
@@ -69,6 +69,12 @@ public class AbstractDao<T> {
 			}
 		}
 		return list;
+	}
+	public void addToCart(T t){
+		if(cart==null){
+			cart = new Cart();
+		}
+		cart.addToCart(t);
 	}
 
 
