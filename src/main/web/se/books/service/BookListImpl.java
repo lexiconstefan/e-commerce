@@ -23,7 +23,7 @@ public class BookListImpl implements BookList{
 	@Override
 	public boolean add(Book book, int quantity) {
 		// TODO Auto-generated method stub
-		return false;
+		return dao.add(book, quantity);
 	}
 
 	@Override

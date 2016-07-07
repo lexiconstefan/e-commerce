@@ -33,7 +33,9 @@ public class BookDaoImpl extends AbstractDao<Book> implements IBookDao{
 	@Override
 	public boolean add(Book book, int quantity) {
 		// TODO Auto-generated method stub
-		return false;
+		book.setNbr(quantity);
+		getBookList().add(book);
+		return true;
 	}
 
 	@Override

@@ -21,5 +21,10 @@ public class BookController {
 			System.out.println(b.toString());
 		}
 	}
+	public Book addBook(Book book, int quantity){
+		
+		service.add(book, quantity);
+		return book;
+	}
 
 }
